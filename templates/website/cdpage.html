@@ -1,0 +1,34 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block sbjct_container %}
+	<div style="width:100%; height:250px; display:block;">
+		<div style="display:inline; float:left;">
+			<img src="{% static 'images/website/cd.png' %}" style="height:250px; width:250px;">
+		</div>
+		
+		<div style="display:inline; float:left;margin-left:2%;">
+			<strong>{{playlist.name}}</strong> <br><br>
+			
+			Genero: {{playlist.gender}}<br><br>
+			
+			<button>Download PlayList</button>
+		</div>
+	</div>
+	
+	<center><h2>Musicas</h2></center>
+	
+	{% for music in musics %}
+		<div class="songclass">
+			<img src="{% static 'images/website/cd.png'%}" class="music_image song_item" align="middle">
+						
+			<h3 class="music_singer song_item"> {{music.name}} <sub>({{music.singer}})</sub></h3> 
+							
+			<a href="{{MEDIA_URL}}{{music.file}}" class="downloadbutton" download><button>DOWNLOAD</button></a>
+						
+			<audio controls class="music_player song_item">
+				<source src="{{MEDIA_URL}}{{music.file}}" type = "audio/mp3">
+			</audio>
+		</div>
+	{% endfor %}
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block sbjct_container %}
+	<!--
+	
+		 <iframe 
+		 	width="560" 
+		 	height="315" 
+		 	src="https://www.youtube.com/embed/pbSwJYADnb8" 
+		 	title="YouTube video player" 
+		 	frameborder="0" 
+		 	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		 </iframe> 
+	-->
+
+
+	<div class="ms_tocadas">
+		<h2>Mais tocadas</h2>
+		
+		{% for music in musics %}
+			<div  class="cd_image">
+				<a href="resultpage/{{music.slug}}/"> 
+					<figure>
+						<img src="{% static '/images/website/cd.png' %}" style="width: 100px; margin-right: 10%;">
+						<figcaption>{{ music.name }}</figcaption>
+					</figure>
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+	
+	<div class="top_playlists ms_tocadas">
+		<h2>Top playlists mais tocadas</h2>
+		
+		{% for playlist in playlists %}
+		
+			<div class="cd_image ">
+				<a href="cdpage/{{playlist.slug}}/">
+					<figure>
+						<img src="{% static '/images/website/cd.png' %}" style="width: 100px; margin-right: 10%;">
+						<figcaption>{{ playlist.name }}</figcaption>
+					</figure>
+				</a>
+			</div>
+		
+		{% endfor %}
+	</div>
+	
+	<div class="ms_tocadas">
+		<h2>Top Artistas</h2>
+		
+		{% for singer in singers %}
+			<div class="cd_image">
+				<a href="singerpage/{{singer.slug}}/">
+				<figure>
+					<img src="{{ MEDIA_URL }}{{ singer.photo }}" style="width:100px; height:100px; margin-right:10%;">
+					<figcaption>{{ singer.name }}</figcaption>
+				</figure>
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+	
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block subjct_container %}
+
+{% endblock %}

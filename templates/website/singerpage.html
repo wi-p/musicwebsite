@@ -1,0 +1,32 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block sbjct_container %}
+	<div class="info_display">
+		<div class="info_image">
+			<img src="{{MEDIA_URL}}{{singer.photo}}" style="height:250px; width:250px;">
+		</div>
+		
+		<div class="info_texts">
+			<strong>{{singer.name}}</strong>
+		</div>
+	</div>
+	
+	<center><h2>Musicas</h2></center>
+	
+	{% for music in musics %}
+		<div class="songclass">
+			<img src="{% static 'images/website/cd.png' %}" class="music_image song_item" align="middle">
+			
+			<h3 class="music_singer song_item">{{music.name}}</h3>
+			
+			<a href="{{MEDIA_URL}}{{music.file}}" class="downloadbutton" download><button>Download</button></a>
+			
+			<audio controls class="music_player song_item">
+				<source src="{{MEDIA_URL}}{{music.file}}" type="audio/mp3">
+			</audio>
+		
+		</div>
+	{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+		<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css"/>
+		
+		<style>
+			.cards{
+				display:inline;
+				float:left;
+				width:150px;
+				height:150px;
+				margin-right:10px;
+				margin-left:10px;
+			}
+			
+			.display-block{
+				border-style:solid;
+				border-width:1px;
+				margin-bottom:2%;
+				height: 250px;
+			}
+			
+			header{
+				background-color:rgb(0,255,0);
+				height:80px;
+				margin-bottom: 10px;
+			}
+			
+			
+		</style>
+		
+		{% block titlepage %}
+		{% endblock %}		
+	</head>
+	
+	<body>
+		<header>
+			<a href="/"><h2 class="header_title header_elements"><img src="{% static 'images/website/logo.png' %}" style="margin-left:2%;"></h2></a>
+			
+			<form id="search-form" class="search_form header_elements" method="post" action="{% url 'result' %}">
+				 {% csrf_token %}
+				
+				<input type="text" name="search">
+				<input type="submit" value="Pesquisar">
+			</form>
+			
+			<a href=""><img src="{% static 'images/website/fb-icon.png' %}" class="sn-icon header_elements"></a>
+			<a href=""><img src="{% static 'images/website/ig-icon.png' %}" class="sn-icon header_elements"></a>
+			<a href=""><img src="{% static 'images/website/tw-icon.png' %}" class="sn-icon header_elements"></a>
+		</header>
+		
+		<div class="parent_container">
+			<div class="subject_container">
+				{% block sbjct_container %}
+				{% endblock %}
+			</div>
+			<div class="ads_container">
+				<a href="https://www.cocacolabrasil.com.br/inicial" target="_blank">
+					<img src="https://media2.giphy.com/media/aDa9iiLZAUTqU/giphy.gif?cid=790b761156319a4413fe912aae6223ba214d011fe8677df7&rid=giphy.gif&ct=g" height="100%" width="100%">
+				</a>
+			</div>
+		</div>
+		
+		<footer>
+			<center>
+				<h4>{{ date }}   Fast Music</h4>
+				<h5>Todos os direitos reservados</h5>
+			</center>		
+		</footer>	
+	</body>
+</html>
